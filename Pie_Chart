@@ -1,0 +1,15 @@
+#! /CorvallisBusHackathon/CorvallisBusHackathon
+
+from pylab import *
+
+figure(1, figsize=(4,4))
+axes([0.1, 0.1, 0.8, 0.8])
+
+mycolors=['thistle', 'medium purple', 'purple', 'orchid', 'medium violet red', 'pale violet Red', 'pink', 'deep pink', 'hot pink', 'red', 'orange red', 'tomato', 'light coral', 'coral', 'dark orange', 'light salmon', 'dark salmon', 'yellow', 'blue', 'navy']
+mylabels=['Route 1', 'Route 2', 'Route 3', 'Route 4', 'Route 5', 'Route 6', 'Route 7', 'Route 8', 'Route 9', 'Route 10', 'Route 11', 'Route 12', 'Route 13', 'Route 14', 'Route 15', 'Route 16', 'Route 17', 'Route 18', 'Route 19', 'Route 20']
+fracs=[40, 30, 20, 10]
+pie(fracs,labels=mylabels,colors=mycolors)
+
+savefig('CorvallisBusHackathon/CorvallisBusHackathon/graphics/pie1')
+
+show()

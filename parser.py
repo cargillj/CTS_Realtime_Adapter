@@ -1,17 +1,16 @@
 import urllib2
-import json
 
 #this calls the stop IDs for processing and saving into a list
 response = urllib2.urlopen('http://www.corvallis-bus.appspot.com/stops')
 data = response.read()
 
-#list of bus ids
-id_list = []							
+#list of stop ids
+stop_list = []							
 
 #parse for id info
 for i in range(0, len(data)):
 	if data[i:(i+5)] == '"ID":':				
-		id_list.append(data[(i+5):(i+10)])		
+		stop_list.append(data[(i+5):(i+10)])		
 
 #an array for storing the times of each route 
 timesArray = []									
@@ -20,16 +19,14 @@ timesArray = []
 gtfsUpdateFile = open("gtfsUpdateFile.txt", "w")
 
 for iterator in range(0, 10):
-	response = urllib2.urlopen('http://www.corvallis-bus.appspot.com/arrivals?stops=' + id_list[iterator])
+	response = urllib2.urlopen('http://www.corvallis-bus.appspot.com/arrivals?stops=' + stop_list[iterator])
 	apiresponse = response.read()	
 	timesArray.append(apiresponse)
 
-bus_data = [[], [], []]
+#2-d array holding the stop_id and arrival times
+stop_data = [[], [], []]
 
-for i in range(0, len(timesArray)): 
-	bus_data[0].append(id_list[i])
-	bus_data[1].append(timesArray[i][32:37])
-	bus_data[2].append(timesArray[i][81:86])
+for i in range(0, len(timesArray)):
+	print timesArray[i]
 
-print timesArray[9]
 #{"10090":[{"Expected":"19 Apr 14 15:52 -0700","Route":"3","Scheduled":"19 Apr 14 15:52 -0700"}

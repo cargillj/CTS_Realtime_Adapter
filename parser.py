@@ -7,7 +7,6 @@ def strTimeToInt(time):
 	result = hours + mins
 	return result
 
-
 #this calls the stop IDs for processing and saving into a list
 response = urllib2.urlopen('http://www.corvallis-bus.appspot.com/stops')
 data = response.read()
@@ -58,7 +57,7 @@ for i in range(0, len(stop_list)):
 	bus_data[1].append(stop_times)
 
 for i in range(0, len(stop_list)):
-	print bus_data[0][i]
-	print bus_data[1][i]
+	if(bus_data[1][i][0] != bus_data[1][i][2]):
+		print bus_data[0][i]
+		print bus_data[1][i]
 
-#{"10090":[{"Expected":"19 Apr 14 15:52 -0700","Route":"3","Scheduled":"19 Apr 14 15:52 -0700"}
